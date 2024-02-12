@@ -1,6 +1,43 @@
 <!doctype html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* use w3.css library for ios style */
+  @import url('https://www.w3schools.com/w3css/4/w3.css');
+  /* define custom css classes */
+  .code {
+    font-size: 20px;
+    color: lightgreen;
+  }
+  .warning {
+    font-weight: bold;
+    color: red;
+    background-color: yellow;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 20px;
+    text-align: center;
+  }
+  /* use media query to adjust the layout for different screen sizes */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+  /* use universal selector to center all text */
+  * {
+    text-align: center;
+  }
+  /* use border-radius to create rounded corners */
+  .w3-card-4 {
+    border-radius: 10px;
+  }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 function getUTCTime() {
   var date = new Date(); 
@@ -33,13 +70,32 @@ function displayTimeAndCode() {
 window.onload = displayTimeAndCode;
 // refresh per min
 setInterval(displayTimeAndCode, 60000);
+
+$(document).ready(function() {
+  // when user hovers over warning paragraphs
+  $(".warning").hover(function() {
+    // change the style to highlight the warning
+    $(this).css("background-color", "white");
+    $(this).css("border-color", "red");
+    $(this).css("color", "black");
+  }, function() {
+    // restore the original style
+    $(this).css("background-color", "yellow");
+    $(this).css("border-color", "black");
+    $(this).css("color", "red");
+  });
+});
 </script>
 </head>
 <body>
-<h1>Aimstar</h1>
+<div class="w3-container">
+<div class="w3-card-4">
+<h1 class="w3-green">Aimstar OTP Generator</h1>
 <p id="time"></p>
-<p id="code"></p>
-<p>! ! If you paid money for this software, you have been scammed! !</p>
-<p>！ ！如果您花钱购买了该软件，那么您就被骗了！ ！</p>
+<p id="code" class="code"></p>
+<p class="warning">!!If you paid money for this software, you have been scammed!!</p>
+<p class="warning">!!如果您花钱购买了该软件，那么您就被骗了!!</p>
+</div>
+</div>
 </body>
 </html>
