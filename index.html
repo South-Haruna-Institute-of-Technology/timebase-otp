@@ -62,10 +62,10 @@ function generateCode(utcTime) {
 function displayTimeAndCode() {
   var utcTime = getUTCTime(); 
   var code = generateCode(utcTime); 
-  var timeString = utcTime.join("-"); 
+  var timeString = utcTime.join(":"); 
   var codeString = code.toString(); 
-  document.getElementById("time").innerHTML = "current utc = " + timeString; 
-  document.getElementById("code").innerHTML = "otp = " + codeString; 
+  document.getElementById("time").innerHTML = timeString; 
+  document.getElementById("code").innerHTML = codeString; 
 }
 
 window.onload = displayTimeAndCode;
@@ -94,7 +94,7 @@ $(document).ready(function() {
 <h1 class="w3-green">Aimstar OTP Generator</h1>
 <img src="AS_Logo.png" width="128" height="128" />
 <p id="time"></p>
-<p id="code" class="code"></p>
+<h1 id="code" class="code"></h1>
 <a href="https://github.com/CowNowK/AimStar">Github repo</a>
 <p class="warning">!!If you paid money for this software, you have been scammed!!</p>
 <p class="warning">!!如果您花钱购买了该软件，那么您就被骗了!!</p>
