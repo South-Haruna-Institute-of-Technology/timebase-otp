@@ -9,7 +9,7 @@ permissions:
     pages: write
     id-token: write
 jobs:
-    obfuscate:
+    actions:
         runs-on: ubuntu-latest
 
         steps:
@@ -19,7 +19,7 @@ jobs:
             fetch-depth: 0
         - name: Obfuscate JS Code
           run: |
-            cd $GITHUB_WORKSPACE/js/src
+            cd $GITHUB_WORKSPACE/js/
             sudo npm install uglify-js -g
             sudo npm install javascript-obfuscator -g
             rm ../totp.min.js
