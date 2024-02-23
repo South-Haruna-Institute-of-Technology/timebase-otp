@@ -23,7 +23,6 @@ jobs:
             sudo npm install javascript-obfuscator -g
             rm ../totp.min.js
             javascript-obfuscator ./totp.js -o ../totp.min.js --options-preset high-obfuscation
-            rm ./output.js
         - name: Commit files
           run: |
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
