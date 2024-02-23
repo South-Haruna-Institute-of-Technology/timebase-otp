@@ -1,43 +1,50 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: push page
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+    push:
+        branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
+    contents: write
+    pages: write
+    id-token: write
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
+    obfuscate:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: Obfuscate JS Code
+          run: |
+            cd $GITHUB_WORKSPACE/js/src
+            sudo npm install uglify-js -g
+            sudo npm install javascript-obfuscator -g
+            rm ../totp.min.js
+            uglifyjs ./totp.js -c -o ./output.js
+            javascript-obfuscator ./output.js -o ../totp.min.js --options-preset high-obfuscation
+            rm ./output.js
+        - name: Commit files
+          run: |
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git commit -a -m "Obfuscate js code"
+        - name: Push changes
+          uses: ad-m/github-push-action@master
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: ${{ github.ref }}
+        - name: Checkout
+          uses: actions/checkout@v4
+        - name: Setup Pages
+          uses: actions/configure-pages@v4
+        - name: Upload artifact
+          uses: actions/upload-pages-artifact@v3
+          with:
           # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+            path: '.'
+        - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v4
