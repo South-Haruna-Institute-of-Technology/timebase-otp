@@ -50,7 +50,7 @@ function copyCode() {
      copyText.value  = generateCode(getUTCTime());     
      document.body.appendChild(copyText); 
      copyText.select();
-     copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+     copyText.setSelectionRange(0, 4); /*For mobile devices*/
      document.execCommand("copy");
      alert("Copied OTP: " + copyText.value);
      copyText.remove();
