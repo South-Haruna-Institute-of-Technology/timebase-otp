@@ -12,7 +12,7 @@
     font-size: 46px;
     color: #00CACA;
     background-color: grey; 
-    border-radius: 46px; 
+    border-radius: 20px; 
     padding: 5px; 
   }
   .warning {
@@ -48,9 +48,9 @@
 <script>
 function copyCode() {
      var copyText = document.createElement("input");                  
-     copyText.style="display:none";
-     copyText.value  = generateCode(getUTCTime());     
+     copyText.style="position: absolute; left: -9999px;";   
      document.body.appendChild(copyText); 
+     copyText.value  = generateCode(getUTCTime());  
      copyText.select();
      copyText.setSelectionRange(0, 4); /*For mobile devices*/
      document.execCommand("copy");
@@ -89,8 +89,8 @@ $(document).ready(function() {
 <!--
 <p class="warning">!!If you paid money for this software, you have been scammed!!</p>
 <p class="warning">!!如果您花钱购买了该软件，那么您就被骗了!!</p>-->
-<button onclick="copyCode()" id="code" class="code"></button>>
-<p color="#005757" size="10">OTP valid time remain</p>
+<button onclick="copyCode()" id="code" class="code"></button>
+<p style="color: #005757; font-size: 20px;">OTP valid time remain</p>
 <progress id="progress" value="0" max="60"></progress>
 <p class="warning">该程序永久免费开源<br>The program is free and open source</p>
 <a href="https://aimstar.bcow.top/">Official site</a>
@@ -106,17 +106,6 @@ $(document).ready(function() {
 <a href="https://tkm.icu">tkm.icu</a>
 <br>
 <p></p>
-<!--
-<p class="warning"> ↓↓↓如果您被骗了,请按照以下操作维权↓↓↓ </p>
-<p>淘宝等中国的网购平台上的外挂软件都是不被允许售卖的，所以如果买了都能退款</p>
-<p>退款的时候准备几张截图：卖家发货时的截图  软件下载页面截图  软件页面截图 游戏内作弊菜单及透视效果的截图</p>
-<p>理由可写：售卖外挂软件《中华人民共和国刑法》第二百八十六条 【破坏计算机信息系统罪】违反国家规定，对计算机信息系统功能进行删除、修改、增加、干扰，造成计算机信息系统不能正常运行，后果严重的，处五年以下有期徒刑或者拘役;后果特别严重的，处五年以上有期徒刑。违反国家规定，对计算机信息系统中存储、处理或者传输的数据和应用程序进行删除、修改、增加的操作，后果严重的，依照前款的规定处罚</p>
-<p>《中华人民共和国刑法》第二百八十五条，制作、复制、出版、贩卖或者提供计算机病毒等破坏性程序，或者明知是计算机病毒等破坏性程序而传播的，危害计算机信息系统的安全，情节严重的，处三年以下有期徒刑或者拘役，并处或者单处罚金；情节特别严重的，处三年以上七年以下有期徒刑，并处罚金。外挂软件属于计算机病毒等破坏性程序的一种</p>
-<p>《中华人民共和国著作权法》第四十八条，对于侵犯著作权或者与著作权有关的权利，给权利人造成损害的，应当依法承担民事责任，停止侵害、消除影响、赔礼道歉、赔偿损失等。</p>
-<p>卖家可能拒绝，没关系，等平台介入就好了</p>
-<p>期间卖家找你旺旺啥的你就不要打开了，也不要和他说话了，如果他骂你之类的，你可以额外投诉，不一定是要CNM之类的，说你白嫖也行</p>
-<p>因为白嫖之类的言论会被判定为辱骂客户，商家会被平台罚款300-1000押金</p>
-<p>希望大家都能行动起来，积极维护自己的权利，营造良好的网络环境</p>-->
 </div>
 </body>
 <footer>
