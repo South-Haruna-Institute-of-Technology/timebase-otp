@@ -55,7 +55,99 @@
   /* use border-radius to create rounded corners */
   .w3-card-4 {
     border-radius: 10px;
+    background: rgba(29, 31, 32, 0.33);
+    backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
   }
+  .w3-yellow {
+    background-image: linear-gradient(to right, rgb(255, 251, 0) 25%, rgb(228, 156, 0) 90%);
+    background-color: grey; 
+    border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+  }
+body {
+    
+	background: url("https://s2.loli.net/2024/04/03/8i7g1mDksM2hqFI.webp");
+	background-position: left center;
+	background-size: cover;
+	color: azure;
+}
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  min-width: 20vw;
+  max-width: 75vw;
+  background: rgba(29, 31, 32, 0.33);
+  color: white;
+  text-align: left;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px 10px rgba(0, 0, 0, 0.33);
+  padding: 15px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 1000;
+  min-height: 30px;
+}
+
+.notification-header {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.notification-body {
+  font-size: 14px;
+}
+
+.closebtn {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.closebtn:hover {
+  color: #ccc;
+}
+
+@keyframes slideIn {
+  0% {
+    right: -20px;
+    opacity: 0;
+  }
+  100% {
+    right: 20px;
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    right: 20px;
+    opacity: 1;
+  }
+  100% {
+    right: -20px;
+    opacity: 0;
+  }
+}
+
+.notification.show {
+  animation: slideIn 0.5s cubic-bezier(0.75, 0.25, 0.25, 0.75) forwards;
+}
+
+.notification.hide {
+  animation: slideOut 0.5s cubic-bezier(0.75, 0.25, 0.25, 0.75) forwards;
+}
+
+} 
+
+}
 </style>
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -96,13 +188,13 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-  <p></p>
+<div class="homepage">
   <div class="ad-container">
-    <a href="http://www.xn--ebrsk.icu/"><img class="ad" src="https://s2.loli.net/2024/04/04/vMdGncBmIY5rC29.webp"> </a>
+    <a href="http://www.xn--ebrsk.icu/"><img class="ad" src="ad/DG.webp" alt="ad1" style="width: 95%;object-fit: contain;"> </a>
   </div>
 <div class="w3-container">
 <div class="w3-card-4">
-<h1 class="w3-green">Aimstar OTP Generator</h1>
+<h1 class="w3-yellow">Aimstar OTP Generator</h1>
 <img src="AS_Logo.png" width="128" height="128" />
 <p id="time"></p>
 <!--
@@ -118,22 +210,34 @@ $(document).ready(function() {
 <p size="10"> views <span id="busuanzi_value_site_pv"></span> </p>
 
 </div>
+</div>
 <br>
+<div id="friendlylinks">
 <p>Friendly links</p>
-<a href="https://www.hvhbbs.com"><img src="https://github.com/M3351AN/CS2-Stats-Fetch/assets/65479796/a40d9ed5-d4fc-4401-a159-17e37f33cb9c" width= "50%"> </a>
+<a href="https://www.hvhbbs.com"><img src="https://s2.loli.net/2024/04/04/yduPSv6xk8mCEKD.gif" alt="hvhbbs" width= "50%"> </a>
 <br>
-<a href="https://tkm.icu">tkm.icu</a>
+<a href="https://teiku.moe"><img src="https://s2.loli.net/2024/04/04/JkwocrjVuaqKsCf.webp" alt="teiku.moe" width= "20%"> </a>
 <br>
-<p></p>
+</div>
+<div class="notification">
+          <span class="closebtn" onclick="this.parentElement.classList.add('hide');">×</span>
+          <div class="notification-header">Attention!</div>
+	  <div class="notification-body">
+              <img src="https://s2.loli.net/2024/04/04/mkJTvZ59jgfq1tV.webp" alt="FreePalestine" style="width: 95%;object-fit: contain;"> <br>
+              The Israeli occupation of Palestine has caused thousands of children to suffer every day.<br> Consider helping them: <br>
+              <a href="https://www.pcrf.net/" target="_blank">PCRF</a> - 
+              <a href="https://help.unicef.org/donate-to-children" target="_blank">UNICEF</a> - 
+              <a href="https://donate.unrwa.org/gaza/~my-donation" target="_blank">UNRWA</a>
+          </div>
+</div>
+<div id="copyright">
+		<script async>
+			function Year(number) { return (number < 1000) ? number + 1900 : number; }
+			document.write('© 2023-'+Year(new Date().getYear())+' CowNow & 渟雲 - All Rights Reserved.');<!--However,this site is build by me.-->
+		</script>
+</div>
 </div>
 <script type="text/javascript" id="myhk" src="https://myhkw.cn/api/player/168611829634" key="168611829634" m="1"></script>
+
 </body>
-<footer>
-        <div id="FreePalestine">
-          <img src="https://s2.loli.net/2024/04/03/BZXmF8AlLT4dcUn.webp" width="256" height="171"> <br>The Israeli occupation of Palestine has caused thousands of children to suffer every day.<br> Consider helping them: 
-          <a href="https://www.pcrf.net/" target="_blank">PCRF</a> - 
-          <a href="https://help.unicef.org/donate-to-children" target="_blank">UNICEF</a> - 
-          <a href="https://donate.unrwa.org/gaza/~my-donation" target="_blank">UNRWA</a>
-        </div>
-</footer>
 </html>
