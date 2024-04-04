@@ -27,3 +27,4 @@ function displayTimeAndCode() {
   document.getElementById("code").innerHTML = codeString; 
   document.getElementById("progress").value = remaining;
 }
+
