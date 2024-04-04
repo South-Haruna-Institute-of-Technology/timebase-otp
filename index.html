@@ -70,8 +70,8 @@
   }
 body {
     
-	background: url("https://s2.loli.net/2024/04/03/8i7g1mDksM2hqFI.webp");
-	background-position: left center;
+	background: url("https://api.aixiaowai.cn/api/api.php");
+	background-position: center;
 	background-size: cover;
 	color: azure;
 }
@@ -116,7 +116,20 @@ body {
   color: #ccc;
 } 
 
+@keyframes progressBarAnimation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 200px;
+  }
 }
+
+#progress {
+  width: 200px;
+  animation: progressBarAnimation 500ms ease-out;
+}
+
 </style>
 <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
