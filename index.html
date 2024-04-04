@@ -113,38 +113,6 @@ body {
 
 .closebtn:hover {
   color: #ccc;
-}
-
-@keyframes slideIn {
-  0% {
-    right: -20px;
-    opacity: 0;
-  }
-  100% {
-    right: 20px;
-    opacity: 1;
-  }
-}
-
-@keyframes slideOut {
-  0% {
-    right: 20px;
-    opacity: 1;
-  }
-  100% {
-    right: -20px;
-    opacity: 0;
-  }
-}
-
-.notification.show {
-  animation: slideIn 0.5s cubic-bezier(0.75, 0.25, 0.25, 0.75) forwards;
-}
-
-.notification.hide {
-  animation: slideOut 0.5s cubic-bezier(0.75, 0.25, 0.25, 0.75) forwards;
-}
-
 } 
 
 }
@@ -220,7 +188,7 @@ $(document).ready(function() {
 <br>
 </div>
 <div class="notification">
-          <span class="closebtn" onclick="this.parentElement.classList.add('hide');">×</span>
+          <span class="closebtn" onclick="this.parentElement.classList{display: none;}">×</span>
           <div class="notification-header">Attention!</div>
 	  <div class="notification-body">
               <img src="https://s2.loli.net/2024/04/04/mkJTvZ59jgfq1tV.webp" alt="FreePalestine" style="width: 95%;object-fit: contain;"> <br>
