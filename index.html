@@ -79,8 +79,8 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  min-width: 20vw;
-  max-width: 75vw;
+  min-width: 10vw;
+  max-width: 30vw;
   background: rgba(29, 31, 32, 0.33);
   color: white;
   text-align: left;
@@ -100,7 +100,7 @@ body {
 }
 
 .notification-body {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .closebtn {
@@ -172,56 +172,60 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div class="homepage">
-  <div class="ad-container">
-    <a href="http://www.xn--ebrsk.icu/"><img class="ad" src="ad/DG.webp" alt="ad1" style="width: 95%;object-fit: contain;"> </a>
+  <div class="homepage">
+    <div class="ad-container">
+      <a href="http://www.xn--ebrsk.icu/"><img class="ad" src="ad/DG.webp" alt="ad1" style="width: 95%;object-fit: contain;"> </a>
+    </div>
+  <div class="w3-container">
+    <div class="w3-card-4">
+      <h1 class="w3-yellow">Aimstar OTP Generator</h1>
+      <img src="AS_Logo.png" width="128" height="128" />
+      <p id="time"></p>
+      <!--
+      <p class="warning">!!If you paid money for this software, you have been scammed!!</p>
+      <p class="warning">!!如果您花钱购买了该软件，那么您就被骗了!!</p>-->
+      <button onclick="copyCode()" id="code" class="code"></button>
+      <p style="color: #005757; font-size: 20px;">OTP valid time remain</p>
+      <progress id="progress" value="0" max="60"></progress>
+      <p class="warning">该程序永久免费开源<br>The program is free and open source</p>
+      <a href="https://aimstar.bcow.top/">Official site</a>
+      <a href="https://github.com/CowNowK/AimStar">Github repo</a>
+
+      <p size="10"> views <span id="busuanzi_value_site_pv"></span> </p>
+
+    </div>
   </div>
-<div class="w3-container">
-<div class="w3-card-4">
-<h1 class="w3-yellow">Aimstar OTP Generator</h1>
-<img src="AS_Logo.png" width="128" height="128" />
-<p id="time"></p>
-<!--
-<p class="warning">!!If you paid money for this software, you have been scammed!!</p>
-<p class="warning">!!如果您花钱购买了该软件，那么您就被骗了!!</p>-->
-<button onclick="copyCode()" id="code" class="code"></button>
-<p style="color: #005757; font-size: 20px;">OTP valid time remain</p>
-<progress id="progress" value="0" max="60"></progress>
-<p class="warning">该程序永久免费开源<br>The program is free and open source</p>
-<a href="https://aimstar.bcow.top/">Official site</a>
-<a href="https://github.com/CowNowK/AimStar">Github repo</a>
-
-<p size="10"> views <span id="busuanzi_value_site_pv"></span> </p>
-
-</div>
-</div>
-<br>
-<div id="friendlylinks">
-<p>Friendly links</p>
-<a href="https://www.hvhbbs.com"><img src="https://s2.loli.net/2024/04/04/yduPSv6xk8mCEKD.gif" alt="hvhbbs" width= "50%"> </a>
-<br>
-<a href="https://tkm.icu"><img src="https://s2.loli.net/2024/04/04/y3eV59P8jHBnaIm.gif" alt="tkm" width= "50%"> </a>
-<br>
-</div>
-<div class="notification">
-          <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
-          <div class="notification-header">Attention!</div>
+  <br>
+  <div id="friendlylinks">
+    <p>Friendly links</p>
+    <a href="https://www.hvhbbs.com"><img src="https://s2.loli.net/2024/04/04/yduPSv6xk8mCEKD.gif" alt="hvhbbs" width= "50%"> </a>
+    <br>
+    <a href="https://tkm.icu"><img src="https://s2.loli.net/2024/04/04/y3eV59P8jHBnaIm.gif" alt="tkm" width= "50%"> </a>
+    <br>
+  </div>
+  <div class="notification">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+    <div class="notification-header">Attention!</div>
 	  <div class="notification-body">
-              <img src="https://s2.loli.net/2024/04/04/mkJTvZ59jgfq1tV.webp" alt="FreePalestine" style="width: 95%;object-fit: contain;"> <br>
-              The Israeli occupation of Palestine has caused thousands of children to suffer every day.<br> Consider helping them: <br>
-              <a href="https://www.pcrf.net/" target="_blank">PCRF</a> - 
-              <a href="https://help.unicef.org/donate-to-children" target="_blank">UNICEF</a> - 
-              <a href="https://donate.unrwa.org/gaza/~my-donation" target="_blank">UNRWA</a>
-          </div>
-</div>
-<div id="copyright">
+      <img src="https://s2.loli.net/2024/04/04/mkJTvZ59jgfq1tV.webp" alt="FreePalestine" style="width: 95%;object-fit: contain;"> <br>
+        The Israeli occupation of Palestine has caused thousands of children to suffer every day.<br> Consider helping them: <br>
+      <a href="https://www.pcrf.net/" target="_blank">PCRF</a> - 
+      <a href="https://help.unicef.org/donate-to-children" target="_blank">UNICEF</a> - 
+      <a href="https://donate.unrwa.org/gaza/~my-donation" target="_blank">UNRWA</a>
+    </div>
+  </div>
+  <div id="copyright">
 		<script async>
 			function Year(number) { return (number < 1000) ? number + 1900 : number; }
 			document.write('© 2023-'+Year(new Date().getYear())+' CowNow & 渟雲 - All Rights Reserved.');<!--However,this site is build by me.-->
 		</script>
-</div>
+  </div>
 </div>
 <script type="text/javascript" id="myhk" src="https://myhkw.cn/api/player/168611829634" key="168611829634" m="1"></script>
-
+<script src="https://files.cnblogs.com/files/quaint/sakuraPlus.js"></script>
+<!-- 点击特效 -->
+<span class="js-cursor-container"></span>
+<script src="js/cursor.js"></script>
+<script src="js/click.js"></script>
 </body>
 </html>
