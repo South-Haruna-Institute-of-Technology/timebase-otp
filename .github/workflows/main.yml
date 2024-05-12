@@ -13,6 +13,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+
     - name: Install Node.js
       uses: actions/setup-node@v4
       with:
@@ -26,6 +31,9 @@ jobs:
 
     - name: Minify JS file
       run: uglifyjs js/totp.js --compress --mangle --output totp.min.js
+
+    - name: Run PHP script
+      run: php api/index.php
 
     - name: Commit and push if necessary
       run: |
