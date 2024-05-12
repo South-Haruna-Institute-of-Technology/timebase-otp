@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const totp = require('./totp.js');
+const totp = require('../totp.min.js');
 
 app.get('/api/otp', (req, res) => {
     res.send(totp.getUTCTime());
