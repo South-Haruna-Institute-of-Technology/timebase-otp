@@ -1,7 +1,7 @@
 <?php
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL, "http://localhost:3000/api/otp");
+curl_setopt($ch, CURLOPT_URL, "http://localhost:3000/api/utcTime");
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
