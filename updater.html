@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>AimStar Offset Updater</title>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<style>
+  body {
+    background-color: #2B2B2B;
+    color: #A9B7C6; 
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  }
+
+  a {
+    color: #287BDE;
+  }
+
+  button {
+    background-color: #3C3F41;
+    color: #A9B7C6;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #4C5052;
+  }
+
+  input, textarea {
+    background-color: #313335;
+    color: #A9B7C6;
+    border: 1px solid #3C3F41;
+  }
+
+
+</style>
+
+
+</head>
+<body>
+<h1>AimStar Offset Updater</h1>
+<button id="loadData">fetch Offsets</button>
+<button id="downloadYAML" hidden>download YAML</button>
+<div id="output" style="white-space: pre-wrap;"></div>
+
+<script>
+function mergeObjects(target, source) {
+  Object.keys(source).forEach(function(key) {
+    if (target.hasOwnProperty(key) && typeof target[key] === 'object' && typeof source[key] === 'object') {
+      mergeObjects(target[key], source[key]);
+    } else if (target.hasOwnProperty(key) && Array.isArray(target[key]) && Array.isArray(source[key])) {
+      target[key] = target[key].concat(source[key]);
+    } else {
+      target[key] = source[key];
+    }
+  });
+}
+
+function loadData() {
+  Promise.all([
+    fetch('https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/client.dll.json').then(response => response.json()),
+    fetch('https://aimstar.tkm.icu/drmpattern.json').then(response => response.json()),
+    fetch('https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/offsets.json').then(response => response.json()),
+    fetch('https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/buttons.json').then(response => response.json())
+  ]).then(data => {
+    var mergedData = {};
+    data.forEach(datum => {
+      mergeObjects(mergedData, datum);
+    });
+    var yamlData = jsyaml.dump(mergedData);
+    document.getElementById('output').textContent = yamlData;
+    document.getElementById('downloadYAML').hidden = false;
+  });
+}
+
+function downloadYAML() {
+  var data = document.getElementById('output').textContent;
+  var blob = new Blob([data], { type: 'text/yaml' });
+  var url = window.URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'offsets.yaml';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  window.URL.revokeObjectURL(url);
+}
+
+document.getElementById('loadData').addEventListener('click', loadData);
+document.getElementById('downloadYAML').addEventListener('click', downloadYAML);
+</script>
+
+</body>
+</html>
