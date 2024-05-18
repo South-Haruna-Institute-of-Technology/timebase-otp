@@ -11,7 +11,7 @@
   }
 
   a {
-    color: #287BDE;
+    color: #6A8759;
   }
 
   button {
@@ -33,18 +33,28 @@
     border: 1px solid #3C3F41;
   }
 
-
 </style>
 
 
 </head>
 <body>
 <h1>AimStar Offset Updater</h1>
+<a>Latest Update: <span id="lastUpdateTime"></span><br></a>
 <button id="loadData">fetch Offsets</button>
 <button id="downloadYAML" hidden>download YAML</button>
 <div id="output" style="white-space: pre-wrap;"></div>
 
 <script>
+fetch('https://api.github.com/repos/a2x/cs2-dumper/commits?path=/output')
+  .then(response => response.json())
+  .then(commits => {
+    if (commits.length > 0) {
+      const lastCommitTime = commits[0].commit.committer.date;
+      document.getElementById('lastUpdateTime').textContent = lastCommitTime;
+    }
+  })
+  .catch(error => console.error('Error:', error));
+
 function mergeObjects(target, source) {
   Object.keys(source).forEach(function(key) {
     if (target.hasOwnProperty(key) && typeof target[key] === 'object' && typeof source[key] === 'object') {
