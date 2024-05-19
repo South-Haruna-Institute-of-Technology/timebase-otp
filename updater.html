@@ -75,14 +75,26 @@ function loadData() {
     fetch('https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/buttons.json').then(response => response.json())
   ]).then(data => {
     var mergedData = {};
+    
+    const lastUpdTime = document.getElementById('lastUpdateTime').textContent;
+    if (!mergedData.sundry) {
+      mergedData.sundry = {};
+    }
+
+    mergedData.sundry.updTime = lastUpdTime;
+    mergedData.sundry.localMachine = 1145141919810;
+
+
     data.forEach(datum => {
       mergeObjects(mergedData, datum);
     });
+
     var yamlData = jsyaml.dump(mergedData);
     document.getElementById('output').textContent = yamlData;
     document.getElementById('downloadYAML').hidden = false;
   });
 }
+
 
 function downloadYAML() {
   var data = document.getElementById('output').textContent;
