@@ -69,10 +69,10 @@ function mergeObjects(target, source) {
 
 function loadData() {
   Promise.all([
-    fetch('https://gitee.com/TEIKUMO/cs2-dumper/raw/main/output/client.dll.json').then(response => response.json()),
+    fetch('https://gitee.com/TEIKUMO/cs2-dumper/raw/main/output/client.dll.json', {mode: 'no-cors'}).then(response => response.json()),
     fetch('https://aimstar.tkm.icu/drmpattern.json').then(response => response.json()),
-    fetch('https://gitee.com/TEIKUMO/cs2-dumper/raw/main/output/offsets.json').then(response => response.json()),
-    fetch('https://gitee.com/TEIKUMO/cs2-dumper/raw/main/output/buttons.json').then(response => response.json())
+    fetch('https://gitee.com/TEIKUMO/cs2-dumper/raw/main/output/offsets.json', {mode: 'no-cors'}).then(response => response.json()),
+    fetch('https://gitee.com/TEIKUMO/cs2-dumper/raw/main/output/buttons.json', {mode: 'no-cors'}).then(response => response.json())
   ]).then(data => {
     var mergedData = {};
     
