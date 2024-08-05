@@ -69,7 +69,7 @@ function mergeObjects(target, source) {
 
 function loadData() {
   Promise.all([
-    fetch('https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/client.dll.json').then(response => response.json()),
+    fetch('https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/client_dll.json').then(response => response.json()),
     fetch('https://aimstar.tkm.icu/drmpattern.json').then(response => response.json()),
     fetch('https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/offsets.json').then(response => response.json()),
     fetch('https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/buttons.json').then(response => response.json())
