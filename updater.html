@@ -84,16 +84,21 @@ function loadData() {
     mergedData.sundry.updTime = lastUpdTime;
     mergedData.sundry.localMachine = 1145141919810;
 
-
     data.forEach(datum => {
       mergeObjects(mergedData, datum);
     });
 
+    // Convert mergedData to YAML
     var yamlData = jsyaml.dump(mergedData);
+
+    // Replace ".dll" with "_dll"
+    yamlData = yamlData.replace(/\.dll/g, '_dll');
+
     document.getElementById('output').textContent = yamlData;
     document.getElementById('downloadYAML').hidden = false;
   });
 }
+
 
 
 function downloadYAML() {
