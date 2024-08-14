@@ -34,8 +34,6 @@
   }
 
 </style>
-
-
 </head>
 <body>
 <h1>AimStar Offset Updater</h1>
@@ -67,6 +65,16 @@ function mergeObjects(target, source) {
   });
 }
 
+function convertToHex(obj) {
+  for (const key in obj) {
+    if (typeof obj[key] === 'number') {
+      obj[key] = '0x' + obj[key].toString(16).toUpperCase();
+    } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+      convertToHex(obj[key]);
+    }
+  }
+}
+
 function loadData() {
   Promise.all([
     fetch('https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/client_dll.json').then(response => response.json()),
@@ -82,11 +90,14 @@ function loadData() {
     }
 
     mergedData.sundry.updTime = lastUpdTime;
-    mergedData.sundry.localMachine = 1145141919810;
+    mergedData.sundry.localMachine = 303814201677840;
 
     data.forEach(datum => {
       mergeObjects(mergedData, datum);
     });
+
+    // Convert all numbers to hex
+    convertToHex(mergedData);
 
     // Convert mergedData to YAML
     var yamlData = jsyaml.dump(mergedData);
@@ -94,11 +105,13 @@ function loadData() {
     // Replace ".dll" with "_dll"
     yamlData = yamlData.replace(/\.dll/g, '_dll');
 
+    // Remove quotes and "0x" prefix
+    yamlData = yamlData.replace(/'0x([0-9A-F]+)'/g, '$1');
+
     document.getElementById('output').textContent = yamlData;
     document.getElementById('downloadYAML').hidden = false;
   });
 }
-
 
 
 function downloadYAML() {
