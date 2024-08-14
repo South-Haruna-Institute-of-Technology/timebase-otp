@@ -65,12 +65,12 @@ function mergeObjects(target, source) {
   });
 }
 
-function convertToHex(obj) {
+function convertToHex(obj, url) {
   for (const key in obj) {
-    if (typeof obj[key] === 'number') {
+    if (typeof obj[key] === 'number' && url !== 'https://aimstar.tkm.icu/drmpattern.json') {
       obj[key] = '0x' + obj[key].toString(16).toUpperCase();
     } else if (typeof obj[key] === 'object' && obj[key] !== null) {
-      convertToHex(obj[key]);
+      convertToHex(obj[key], url);
     }
   }
 }
@@ -92,12 +92,11 @@ function loadData() {
     mergedData.sundry.updTime = lastUpdTime;
     mergedData.sundry.localMachine = 303814201677840;
 
-    data.forEach(datum => {
+    data.forEach((datum, index) => {
       mergeObjects(mergedData, datum);
+      // Convert all numbers to hex except for the specific URL
+      convertToHex(datum, index === 1 ? 'https://aimstar.tkm.icu/drmpattern.json' : '');
     });
-
-    // Convert all numbers to hex
-    convertToHex(mergedData);
 
     // Convert mergedData to YAML
     var yamlData = jsyaml.dump(mergedData);
