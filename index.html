@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+<head>
+<title>OTP Generator - Aimstar CS2 Free Cheat</title>
+<meta name="description" content="OTP code generator of Aimstar CS2 Free Cheat.">
+<link rel="shortcut icon" href="AS_Logo.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* use w3.css library for ios style */
+  @import url('https://www.w3schools.com/w3css/4/w3.css');
+  /* define custom css classes */
+  .code {
+    color: teal;
+    width: 90%;
+    font-size: 46px;
+    background-image: linear-gradient(to right, rgb(255, 251, 0) 25%, rgb(228, 156, 0) 90%);
+    background-color: grey; 
+    border-radius: 25px; 
+    padding: 0px;
+  }
+  .warning {
+    font-weight: bold;
+    color: red;
+    background-color: yellow;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 20px;
+    text-align: center;
+  }
+  .ad-container {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  .ad {
+    width: 100%;
+  }
+  /* use media query to adjust the layout for different screen sizes */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 16px;
+    }
+    .ad-container {
+      max-width: 600px;
+    }
+    .ad {
+    width: 100%;
+  }
+  }
+  /* use universal selector to center all text */
+  * {
+    text-align: center;
+  }
+  /* use border-radius to create rounded corners */
+  .w3-card-4 {
+    border-radius: 10px;
+    background: rgba(29, 31, 32, 0.33);
+    backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+  }
+  .w3-yellow {
+    background-image: linear-gradient(to right, rgb(255, 251, 0) 25%, rgb(228, 156, 0) 90%);
+    background-color: grey; 
+    border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+  }
+body {
+    
+	background: url("https://api.aixiaowai.cn/api/api.php");
+	background-position: center;
+	background-size: cover;
+	color: azure;
+}
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  min-width: 10vw;
+  max-width: 30vw;
+  background: rgba(29, 31, 32, 0.33);
+  color: white;
+  text-align: left;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px 10px rgba(0, 0, 0, 0.33);
+  padding: 15px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 1000;
+  min-height: 30px;
+}
+
+.notification-header {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.notification-body {
+  font-size: 12px;
+}
+
+.closebtn {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.closebtn:hover {
+  color: #ccc;
+} 
+
+@keyframes progressBarAnimation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 200px;
+  }
+}
+
+#progress {
+  width: 200px;
+  animation: progressBarAnimation 500ms ease-out;
+}
+
+</style>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="totp.min.js"></script>
+<script>
+function copyCode() {
+     var copyText = document.createElement("input");                  
+     copyText.style="position: absolute; left: -9999px;";   
+     document.body.appendChild(copyText); 
+     copyText.value  = generateCode(getUTCTime());  
+     copyText.select();
+     copyText.setSelectionRange(0, 4); /*For mobile devices*/
+     document.execCommand("copy");
+     alert("Copied OTP: " + copyText.value);
+     copyText.remove();
+      
+}
+
+window.onload = displayTimeAndCode;
+setInterval(() => {
+    displayTimeAndCode();
+  }, 33);
+
+$(document).ready(function() {
+  // when user hovers over warning paragraphs
+  $(".warning").hover(function() {
+    // change the style to highlight the warning
+    $(this).css("background-color", "white");
+    $(this).css("border-color", "red");
+    $(this).css("color", "black");
+  }, function() {
+    // restore the original style
+    $(this).css("background-color", "yellow");
+    $(this).css("border-color", "black");
+    $(this).css("color", "red");
+  });
+});
+</script>
+</head>
+<body>
+  <div class="homepage">
+    <div class="ad-container">
+      <a href="https://cshao.cc"><img class="ad" src="ad/DG.png" alt="ad1" style="width: 95%;object-fit: contain;"> </a>
+    </div>
+  <div class="w3-container">
+    <div class="w3-card-4">
+      <h1 class="w3-yellow">Aimstar OTP Generator</h1>
+      <img src="AS_Logo.png" width="128" height="128" />
+      <p id="time"></p>
+      <!--
+      <p class="warning">!!If you paid money for this software, you have been scammed!!</p>
+      <p class="warning">!!如果您花钱购买了该软件，那么您就被骗了!!</p>-->
+      <button onclick="copyCode()" id="code" class="code"></button>
+      <p style="color: #005757; font-size: 20px;">OTP valid time remain</p>
+      <progress id="progress" value="0" max="60"></progress>
+      <p class="warning">该程序永久免费开源<br>The program is free and open source</p>
+      <a href="https://aimstar.bcow.top/">Official site</a>
+      <a href="https://github.com/CowNowK/AimStar">Github repo</a>
+
+      <p size="10"> views <span id="busuanzi_value_site_pv"></span> </p>
+
+    </div>
+  </div>
+  <br>
+  <div id="friendlylinks">
+    <p>Friendly links</p>
+    <a href="https://www.hvhbbs.com"><img src="https://s2.loli.net/2024/04/04/yduPSv6xk8mCEKD.gif" alt="hvhbbs" width= "50%"> </a>
+    <br>
+    <a href="https://tkm.icu"><img src="https://s2.loli.net/2024/04/04/y3eV59P8jHBnaIm.gif" alt="tkm" width= "50%"> </a>
+    <br>
+  </div>
+  <div class="notification">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+    <div class="notification-header">Attention!</div>
+	  <div class="notification-body">
+      <img src="https://s2.loli.net/2024/04/04/mkJTvZ59jgfq1tV.webp" alt="FreePalestine" style="width: 95%;object-fit: contain;"> <br>
+        The Israeli occupation of Palestine has caused thousands of children to suffer every day.<br> Consider helping them: <br>
+      <a href="https://www.pcrf.net/" target="_blank">PCRF</a> - 
+      <a href="https://help.unicef.org/donate-to-children" target="_blank">UNICEF</a> - 
+      <a href="https://donate.unrwa.org/gaza/~my-donation" target="_blank">UNRWA</a>
+    </div>
+  </div>
+  <div id="copyright">
+		<script async>
+			function Year(number) { return (number < 1000) ? number + 1900 : number; }
+			document.write('© 2023-'+Year(new Date().getYear())+' CowNow & 渟雲 - All Rights Reserved.');<!--However,this site is build by me.-->
+		</script>
+  </div>
+</div>
+<script type="text/javascript" id="myhk" src="https://myhkw.cn/api/player/168611829634" key="168611829634" m="1"></script>
+<script src="https://files.cnblogs.com/files/quaint/sakuraPlus.js"></script>
+</body>
+</html>
