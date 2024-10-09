@@ -1,4 +1,9 @@
 {
+
+  "cvars": {
+    "mp_teammates_are_enemies": 26977616
+  }
+
   "client.dll": {
     "VACManager_001":[
     "6849B94196811506",
